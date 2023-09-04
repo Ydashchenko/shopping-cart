@@ -1,0 +1,66 @@
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    padding: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+  
+.shop-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+  
+.shop-name-img {
+    width: 50px;
+}
+  
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style-type: none;
+    
+}
+  
+.cart-btn {
+    display: flex;
+    border: 0;
+    background-color: inherit;
+}
+  
+.cart-logo {
+    width: 20px;
+}
+  
+  .cart-items {
+    background-color: red;
+    border-radius: 50%;
+    padding: 1px 5px;
+    font-size: 0.8rem;
+    color: white;
+  }
+  
+  
+  
+  
+  .search-btn {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 10px;
+    justify-self: center;
+    border-radius: 20px;
+    border: 1px black solid;
+    background-color: inherit;
+  }
+  
+  .search-icon {
+    width: 20px;
+    
+  }
+  
