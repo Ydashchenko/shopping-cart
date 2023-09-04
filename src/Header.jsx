@@ -8,10 +8,10 @@ export default function Header() {
     return (
         <>
             <header>
-                <div className='shop-name'>
+                <Link to="/" className='shop-name'>
                     <img className='shop-name-img' src={shopIcon} alt={shopIcon} />
                     <h1 className='shop-name-text'>Champion Shop</h1>
-                </div>
+                </Link>
                 <button className='search-btn'>
                     <img className='search-icon' src={searchLogo} alt={searchLogo} />
                     <span>Search Champion</span>
