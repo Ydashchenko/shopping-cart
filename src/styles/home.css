@@ -1,0 +1,15 @@
+.home {
+    background-size: cover;
+    background-image: url(https://images.alphacoders.com/681/681587.png);
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.store-btn {
+    background-color: black;
+    padding: 20px;
+    border: 1px white solid;
+    font-size: 2rem;
+}

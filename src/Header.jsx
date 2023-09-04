@@ -1,4 +1,4 @@
-import searchLogo from './pics/search.png'
+import searchLogo from './pics/white-search.svg'
 import shoppingCartLogo from './pics/shopping-cart.png'
 import shopIcon from './pics/icon.jpg'
 import { Link } from 'react-router-dom'

@@ -5,7 +5,9 @@ header {
     align-items: center;
     align-self: stretch;
     padding: 10px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    background-color: black;
+    z-index: 2;
 }
 
   
@@ -37,6 +39,9 @@ header {
   
 .cart-logo {
     width: 20px;
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
 }
   
 .cart-items {
@@ -54,12 +59,13 @@ header {
     gap: 10px;
     justify-self: center;
     border-radius: 20px;
-    border: 1px black solid;
+    border: 1px white solid;
     background-color: inherit;
 }
   
 .search-icon {
     width: 20px;
-    
 }
+
+
   
