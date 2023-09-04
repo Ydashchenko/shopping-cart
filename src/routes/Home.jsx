@@ -1,11 +1,12 @@
 import '../styles/home.css'
+import { Link } from 'react-router-dom'
 
 export default function Home() {
     return (
         <main className="home">
-            <button className="store-btn">
+            <Link to="/store" className="store-btn">
                 Shop Now
-            </button>
+            </Link>
         </main>
     )
 }

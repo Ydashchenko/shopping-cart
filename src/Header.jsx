@@ -1,6 +1,6 @@
 import searchLogo from './pics/white-search.svg'
 import shoppingCartLogo from './pics/shopping-cart.png'
-import shopIcon from './pics/icon.jpg'
+import shopIcon from './pics/main-logo.png'
 import { Link } from 'react-router-dom'
 import './styles/header.css'
 
