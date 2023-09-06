@@ -19,7 +19,7 @@ export default function Champion() {
     const divStyle = {
         backgroundImage: `url(${backgroundImageUrl})`,
         backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundPosition: 'center',
     };
 
 

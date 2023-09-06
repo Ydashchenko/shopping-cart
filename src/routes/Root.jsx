@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import { useState, useEffect } from 'react';
+import Cart from '../Cart'
 
 
 export default function Root() {
@@ -24,6 +25,7 @@ export default function Root() {
     return (
         <>
             <Header />
+            <Cart />
             <Outlet context={allChampsArray}/>
             <Footer />   
         </>
