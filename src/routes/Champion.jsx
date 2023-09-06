@@ -25,11 +25,29 @@ export default function Champion() {
 
     return (
         <main id="champion" style={divStyle}>
-            <div className='champion-container'>
+            <div className='champ-container'>
                 <img src={`https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champ}_0.jpg`} alt={champ} />
                 <div className='champ-description'>
-                    <p className='champ-name'>{champ}</p>
-                    <p className='champ-title'>{championData.title}</p>
+                    <div className='champ-name-title'>
+                        <p className='champ-name'>{champ}</p>
+                        <p className='champ-title'>{championData.title}</p>
+                    </div>
+                    <div className='price-cart'>
+                        <p className='champ-price'>$ {parseInt(championData.stats.hp)}</p>
+                        <div className='add-to-cart-form'>
+                            <button className='change-quantity'>-</button>
+                            <input className='input-quantity' type="number" min={1} defaultValue={1} />
+                            <button className='change-quantity'>+</button>
+                        </div>
+                        <button className='add-to-cart-button'>Add to cart</button>
+                    </div>
+                    <ul className='tags'>
+                        {championData.tags.map((tag) => (
+                            <li key={tag}>{tag}</li>
+                        ))}
+                    </ul>
+                    <p>{championData.blurb}</p>
+                    {console.log(championData)}
                 </div>
             </div>
         </main>

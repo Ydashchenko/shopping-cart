@@ -8,17 +8,15 @@
 #root {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
-  min-width: 100vh;
-  justify-content: space-between;
+  justify-content: stretch;
+  align-items: stretch;
   background-color: black;
+  min-height: 100vh;
 }
 
 main {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   flex: 1;
-  width: 100%;
 }
 
 a {
