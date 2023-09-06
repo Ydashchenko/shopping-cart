@@ -1,11 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./routes/Root";
+import Root, { } from "./routes/Root";
 import Store from "./routes/Store"
 import './styles/index.css'
 import ErrorPage from './error-page';
 import Home from "./routes/Home"
+import Champion from './routes/Champion';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
         path: "/store",
         element: <Store />,
       },
+      {
+        path: "/store/:champ",
+        element: <Champion />,
+      }
     ],
   },
 ]);

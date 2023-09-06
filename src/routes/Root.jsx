@@ -6,16 +6,18 @@ import { useState, useEffect } from 'react';
 
 
 export default function Root() {
-    const [allChampsArray, setAllChampsArray] = useState([]);
+    const [allChampsArray, setAllChampsArray] = useState({data: {}});
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch('https://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json');
-            const data = await response.json();
+            try {
+                const response = await fetch('https://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json');
+                const data = await response.json();
 
-            // Extract champion names from the data
-            const allChampionNames = Object.keys(data.data);
-            setAllChampsArray(allChampionNames);
+                setAllChampsArray({ data: data.data });
+            } catch (error) {
+                console.error('Error fetching champion data', error);
+            }
         }
         fetchData();
     }, []);

@@ -12,8 +12,8 @@ export default function Store() {
     return  (
         <main className="store">
             <div className='champion-container'>
-            {allChampsArray.map((champ) => (
-                <ChampionElement champ={champ} key={champ} />
+            {Object.keys(allChampsArray.data).map((champ) => (
+                <ChampionElement champInfo={allChampsArray.data[champ]} key={champ} />
             ))}
             </div>
         </main>
