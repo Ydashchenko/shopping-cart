@@ -22,9 +22,9 @@ export default function Cart({ cartItems }) {
                     )}
                     {cartItems.length > 0 && (
                         <ul className='items-container'>
-                            {cartItems.map((item) => (
-                                <li className='item-container' key={item.champName}>
-                                    <img src={`https://ddragon.leagueoflegends.com/cdn/13.17.1/img/champion/${item.champName}.png`} alt={item.champName} />
+                            {cartItems.map((item, index) => (
+                                <li className='item-container' key={`${item.champName}_${index}`}>
+                                    <img src={`https://ddragon.leagueoflegends.com/cdn/13.17.1/img/champion/${item.champ}.png`} alt={item.champName} />
                                     <div className='item-info'>
                                         <p>{item.champName}</p>
                                         <p>{item.champPrice}</p>
@@ -34,6 +34,7 @@ export default function Cart({ cartItems }) {
                                             <button className='increase-item-in-cart-button'>+</button>
                                         </div>
                                         <button className='remove-from-cart-button'>Remove</button>
+                                        {console.log(cartItems)}
                                     </div>
                                 </li>
                             ))}

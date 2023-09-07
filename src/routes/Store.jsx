@@ -4,7 +4,7 @@ import { useOutletContext } from 'react-router-dom'
 import ChampionElement from '../ChampionElement'
 
 export default function Store() {
-    const allChampsArray = useOutletContext()
+    const {allChampsArray} = useOutletContext()
 
     // http://ddragon.leagueoflegends.com/cdn/img/champion/splash/Aatrox_0.jpg - splash arts
     // https://ddragon.leagueoflegends.com/cdn/img/champion/loading/Aatrox_0.jpg - loading screen

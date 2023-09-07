@@ -1,3 +1,4 @@
+// Root.jsx
 import { Outlet } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
@@ -30,9 +31,11 @@ export default function Root() {
     return (
         <>
             <Header />
-            <Cart cartItems={cartItems} />
-            <Outlet context={allChampsArray}>
+            <Cart cartItems={cartItems} addToCart={addToCart} /> {/* Pass addToCart as a prop */}
+            <Outlet context={{ allChampsArray, addToCart }}> {/* Pass both allChampsArray and addToCart */}
+                {({ addToCart }) => (
                     <Champion addToCart={addToCart} />
+                )}
             </Outlet>
             <Footer />
         </>

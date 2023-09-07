@@ -2,15 +2,18 @@ import {  useParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
 import '../styles/champion.css'
 import { useState } from 'react'
-import PropTypes from 'prop-types'
 
-export default function Champion({ addToCart }) {
+export default function Champion() {
     const { champ } = useParams()
-    const allChampsArray = useOutletContext()
+    const { allChampsArray, addToCart } = useOutletContext();
     const [champAmount, setChampAmount] = useState(1) 
 
     function increaseAmount() {
         setChampAmount(champAmount + 1)
+    }
+
+    function handleSetChampAmount(e) {
+        setChampAmount(e.target.value)
     }
 
     function decreaseAmount() {
@@ -25,7 +28,7 @@ export default function Champion({ addToCart }) {
         const item = {
             champ,
             champPrice,
-            champAmount: 1,
+            champAmount: champAmount,
         };
         addToCart(item); // Call the addToCart function to add the item to the cart
     }
@@ -61,7 +64,7 @@ export default function Champion({ addToCart }) {
                         <p className='champ-price'>$ {champPrice}</p>
                         <div className='add-to-cart-form'>
                             <button onClick={decreaseAmount} className='change-quantity decrease-amount'>-</button>
-                            <input onChange={setChampAmount} className='input-quantity' type="number" min={1} value={champAmount} />
+                            <input onChange={handleSetChampAmount} className='input-quantity' type="number" min={1} value={champAmount} />
                             <button onClick={increaseAmount} className='change-quantity increase-amount'>+</button>
                         </div>
                         <button onClick={handleAddToCart} className='add-to-cart-button'>Add to cart</button>
@@ -77,8 +80,4 @@ export default function Champion({ addToCart }) {
             </div>
         </main>
     )
-}
-
-Champion.propTypes = {
-    addToCart: PropTypes.func
 }
