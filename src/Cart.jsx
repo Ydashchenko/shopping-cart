@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './styles/cart.css';
 import PropTypes from 'prop-types';
 
@@ -8,6 +7,7 @@ export default function Cart({ cartItems, setCartItems }) {
     }
 
     const totalItems = cartItems.reduce((total, item) => total + parseInt(item.champAmount), 0);
+    const totalPrice = cartItems.reduce((total, item) => total + item.champPrice * item.champAmount, 0);
 
     function handleDecrease(itemIndex) {
         const updatedCartItems = [...cartItems];
@@ -24,6 +24,12 @@ export default function Cart({ cartItems, setCartItems }) {
     function handleOnChange(itemIndex, e) {
         const updatedCartItems = [...cartItems];
         updatedCartItems[itemIndex].champAmount = e.target.value;
+        setCartItems(updatedCartItems);
+    }
+
+    function handleRemove(itemIndex) {
+        const updatedCartItems = [...cartItems];
+        updatedCartItems.splice(itemIndex, 1);
         setCartItems(updatedCartItems);
     }
 
@@ -58,11 +64,20 @@ export default function Cart({ cartItems, setCartItems }) {
                                             />
                                             <button className='increase-item-in-cart-button' onClick={() => handleIncrease(index)}>+</button>
                                         </div>
-                                        <button className='remove-from-cart-button'>Remove</button>
+                                        <button onClick={() => handleRemove(index)} className='remove-from-cart-button'>Remove</button>
                                     </div>
                                 </li>
                             ))}
                         </ul>
+                    )}
+                    {cartItems.length > 0 && (
+                        <div className="cart-total">
+                            <div>
+                                <p className="cart-total-label">Total:</p>
+                                <p className="cart-total-price">$ {totalPrice.toFixed(2)}</p>
+                            </div>
+                            <button className="proceed-to-checkout">Proceed to Checkout</button>
+                        </div>
                     )}
                 </div>
             </div>
