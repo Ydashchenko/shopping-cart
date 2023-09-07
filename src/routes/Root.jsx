@@ -2,12 +2,12 @@ import { Outlet } from 'react-router-dom';
 import Header from '../Header';
 import Footer from '../Footer';
 import { useState, useEffect } from 'react';
-import Cart from '../Cart'
-
+import Cart from '../Cart';
+import Champion from './Champion';
 
 export default function Root() {
-    const [allChampsArray, setAllChampsArray] = useState({data: {}});
-    const [cartItems, setCarItems] = useState([])
+    const [allChampsArray, setAllChampsArray] = useState({ data: {} });
+    const [cartItems, setCartItems] = useState([]);
 
     function addToCart(item) {
         setCartItems((prevCartItems) => [...prevCartItems, item]);
@@ -31,8 +31,10 @@ export default function Root() {
         <>
             <Header />
             <Cart cartItems={cartItems} />
-            <Outlet addToCart={addToCart} context={allChampsArray}/>
-            <Footer />   
+            <Outlet context={allChampsArray}>
+                    <Champion addToCart={addToCart} />
+            </Outlet>
+            <Footer />
         </>
     );
 }

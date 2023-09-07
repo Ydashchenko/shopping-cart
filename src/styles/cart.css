@@ -48,3 +48,7 @@
 .hidden {
     display: none;
 }
+
+.close-cart {
+    padding: 2px;
+}

@@ -3,7 +3,6 @@ import './styles/cart.css'
 import PropTypes from 'prop-types'
 
 export default function Cart({ cartItems }) {
-    
 
     function hideCartWindow() {
         document.getElementsByClassName('cart-window')[0].classList.add('hidden');
@@ -20,6 +19,25 @@ export default function Cart({ cartItems }) {
                     </div>
                     {cartItems.length == 0 && (
                         <button className="go-shopping" onClick={hideCartWindow}>Go shopping</button>
+                    )}
+                    {cartItems.length > 0 && (
+                        <ul className='items-container'>
+                            {cartItems.map((item) => (
+                                <li className='item-container' key={item.champName}>
+                                    <img src={`https://ddragon.leagueoflegends.com/cdn/13.17.1/img/champion/${item.champName}.png`} alt={item.champName} />
+                                    <div className='item-info'>
+                                        <p>{item.champName}</p>
+                                        <p>{item.champPrice}</p>
+                                        <div className='amount-item-bar'>
+                                            <button className='decrease-item-in-cart-button'>-</button>
+                                            <input type="number"  />
+                                            <button className='increase-item-in-cart-button'>+</button>
+                                        </div>
+                                        <button className='remove-from-cart-button'>Remove</button>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
                     )}
                 </div>
             </div>

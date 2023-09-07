@@ -25,7 +25,7 @@ export default function Champion({ addToCart }) {
         const item = {
             champ,
             champPrice,
-            champAmount,
+            champAmount: 1,
         };
         addToCart(item); // Call the addToCart function to add the item to the cart
     }
