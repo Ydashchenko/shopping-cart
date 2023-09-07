@@ -1,18 +1,42 @@
 import {  useParams } from 'react-router-dom'
 import { useOutletContext } from 'react-router-dom'
 import '../styles/champion.css'
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-export default function Champion() {
+export default function Champion({ addToCart }) {
     const { champ } = useParams()
     const allChampsArray = useOutletContext()
+    const [champAmount, setChampAmount] = useState(1) 
 
-    // Check if allChampsArray is available and the champion data exists
+    function increaseAmount() {
+        setChampAmount(champAmount + 1)
+    }
+
+    function decreaseAmount() {
+        if (champAmount == 1) {
+            return
+        }
+        setChampAmount(champAmount - 1)
+    }
+
+    function handleAddToCart() {
+        // Create an item object with champName, champPrice, and any other necessary data
+        const item = {
+            champ,
+            champPrice,
+            champAmount,
+        };
+        addToCart(item); // Call the addToCart function to add the item to the cart
+    }
+
     const championData = allChampsArray?.data[champ];
 
     if (!championData) {
-        // Handle the case where data is not available yet
         return <div>Loading...</div>;
     }
+
+    const champPrice = parseInt(championData.stats.hp)
 
     const backgroundImageUrl = `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champ}_0.jpg`;
 
@@ -21,6 +45,7 @@ export default function Champion() {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
     };
+
 
 
     return (
@@ -33,13 +58,13 @@ export default function Champion() {
                         <p className='champ-title'>{championData.title}</p>
                     </div>
                     <div className='price-cart'>
-                        <p className='champ-price'>$ {parseInt(championData.stats.hp)}</p>
+                        <p className='champ-price'>$ {champPrice}</p>
                         <div className='add-to-cart-form'>
-                            <button className='change-quantity'>-</button>
-                            <input className='input-quantity' type="number" min={1} defaultValue={1} />
-                            <button className='change-quantity'>+</button>
+                            <button onClick={decreaseAmount} className='change-quantity decrease-amount'>-</button>
+                            <input onChange={setChampAmount} className='input-quantity' type="number" min={1} value={champAmount} />
+                            <button onClick={increaseAmount} className='change-quantity increase-amount'>+</button>
                         </div>
-                        <button className='add-to-cart-button'>Add to cart</button>
+                        <button onClick={handleAddToCart} className='add-to-cart-button'>Add to cart</button>
                     </div>
                     <ul className='tags'>
                         {championData.tags.map((tag) => (
@@ -54,3 +79,6 @@ export default function Champion() {
     )
 }
 
+Champion.propTypes = {
+    addToCart: PropTypes.func
+}

@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom'
 import './styles/header.css'
 
 export default function Header() {
+    
+    function revealCartWindow() {
+        document.getElementsByClassName('cart-window')[0].classList.remove('hidden');
+    }      
+
     return (
         <>
             <header>
@@ -24,7 +29,7 @@ export default function Header() {
                         <Link to="/store" className='store-tab'>Store</Link>
                     </li>
                     <li>
-                        <button className='cart-btn'>
+                        <button onClick={revealCartWindow} className='cart-btn'>
                             <img className='cart-logo' src={shoppingCartLogo} alt={shoppingCartLogo} />
                             <span className='cart-items'>0</span>
                         </button>

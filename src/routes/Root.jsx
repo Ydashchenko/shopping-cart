@@ -7,6 +7,11 @@ import Cart from '../Cart'
 
 export default function Root() {
     const [allChampsArray, setAllChampsArray] = useState({data: {}});
+    const [cartItems, setCarItems] = useState([])
+
+    function addToCart(item) {
+        setCartItems((prevCartItems) => [...prevCartItems, item]);
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -25,8 +30,8 @@ export default function Root() {
     return (
         <>
             <Header />
-            <Cart />
-            <Outlet context={allChampsArray}/>
+            <Cart cartItems={cartItems} />
+            <Outlet addToCart={addToCart} context={allChampsArray}/>
             <Footer />   
         </>
     );
