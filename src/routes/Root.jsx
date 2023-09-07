@@ -31,8 +31,8 @@ export default function Root() {
     return (
         <>
             <Header />
-            <Cart cartItems={cartItems} addToCart={addToCart} /> {/* Pass addToCart as a prop */}
-            <Outlet context={{ allChampsArray, addToCart }}> {/* Pass both allChampsArray and addToCart */}
+            <Cart cartItems={cartItems} setCartItems={setCartItems} />
+            <Outlet context={{ allChampsArray, addToCart }}> 
                 {({ addToCart }) => (
                     <Champion addToCart={addToCart} />
                 )}
