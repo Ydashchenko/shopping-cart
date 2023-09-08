@@ -6,7 +6,6 @@ import './styles/header.css'
 import PropTypes from 'prop-types'
 
 export default function Header({ totalItems, revealSearchWindow }) {
-    const [isVisible, setIsVisible] = useState(true);
     
     function revealCartWindow() {
         document.getElementsByClassName('cart-window')[0].classList.remove('hidden');

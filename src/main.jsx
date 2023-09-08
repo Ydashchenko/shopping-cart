@@ -7,6 +7,7 @@ import './styles/index.css'
 import ErrorPage from './error-page';
 import Home from "./routes/Home"
 import Champion from './routes/Champion';
+import './styles/animations.css'
 
 const router = createBrowserRouter([
   {

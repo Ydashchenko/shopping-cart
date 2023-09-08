@@ -12,6 +12,7 @@
   align-items: stretch;
   background-color: black;
   min-height: 100vh;
+  
 }
 
 main {
@@ -37,4 +38,3 @@ Link, a, button, .navbar li {
   cursor: pointer;
   transition: 0.2s;
 }
-
