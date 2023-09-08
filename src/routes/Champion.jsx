@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export default function Champion() {
     const { champ } = useParams()
-    const { allChampsArray, addToCart } = useOutletContext();
+    const { allChampsArray, addToCart, cartItems, setCartItems } = useOutletContext();
     const [champAmount, setChampAmount] = useState(1) 
 
     function increaseAmount() {
@@ -29,16 +29,28 @@ export default function Champion() {
 
     function handleAddToCart() {
         if (champAmount < 1) {
-            return
+            return;
         }
-        // Create an item object with champName, champPrice, and any other necessary data
-        const item = {
-            champ,
-            champPrice,
-            champAmount: champAmount,
-        };
-        addToCart(item); // Call the addToCart function to add the item to the cart
+    
+        // Check if the champion is already in the cart
+        const existingItemIndex = cartItems.findIndex((item) => item.champ === champ);
+    
+        if (existingItemIndex !== -1) {
+            // Champion is already in the cart, update the champAmount
+            const updatedCartItems = [...cartItems];
+            updatedCartItems[existingItemIndex].champAmount += champAmount;
+            setCartItems(updatedCartItems);
+        } else {
+            // Champion is not in the cart, add a new item
+            const item = {
+                champ,
+                champPrice,
+                champAmount: champAmount,
+            };
+            addToCart(item);
+        }
     }
+    
 
     const championData = allChampsArray?.data[champ];
 

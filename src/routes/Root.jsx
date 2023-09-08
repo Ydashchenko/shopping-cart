@@ -32,9 +32,9 @@ export default function Root() {
         <>
             <Header />
             <Cart cartItems={cartItems} setCartItems={setCartItems} />
-            <Outlet context={{ allChampsArray, addToCart }}> 
+            <Outlet context={{ allChampsArray, addToCart, cartItems, setCartItems }}> 
                 {({ addToCart }) => (
-                    <Champion addToCart={addToCart} />
+                    <Champion addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />
                 )}
             </Outlet>
             <Footer />
