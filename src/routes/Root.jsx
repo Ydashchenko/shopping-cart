@@ -5,7 +5,7 @@ import Footer from '../Footer';
 import { useState, useEffect } from 'react';
 import Cart from '../Cart';
 import Champion from './Champion';
-import Search from '../search';
+import Search from '../Search';
 
 export default function Root() {
     const [allChampsArray, setAllChampsArray] = useState({ data: {} });
