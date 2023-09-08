@@ -3,8 +3,9 @@ import shoppingCartLogo from './pics/shopping-cart.png'
 import shopIcon from './pics/main-logo.png'
 import { Link } from 'react-router-dom'
 import './styles/header.css'
+import PropTypes from 'prop-types'
 
-export default function Header() {
+export default function Header({ totalItems }) {
     
     function revealCartWindow() {
         document.getElementsByClassName('cart-window')[0].classList.remove('hidden');
@@ -31,11 +32,15 @@ export default function Header() {
                     <li>
                         <button onClick={revealCartWindow} className='cart-btn'>
                             <img className='cart-logo' src={shoppingCartLogo} alt={shoppingCartLogo} />
-                            <span className='cart-items'>0</span>
+                            <span className='cart-items'>{totalItems > 99 ? "99+" : totalItems}</span>
                         </button>
                     </li>
                 </ul>
             </header>
         </>
     )
+}
+
+Header.propTypes = {
+    totalItems: PropTypes.number
 }

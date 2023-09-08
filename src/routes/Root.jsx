@@ -28,10 +28,12 @@ export default function Root() {
         fetchData();
     }, []);
 
+    const totalItems = cartItems.reduce((total, item) => total + item.champAmount, 0);
+
     return (
         <>
-            <Header />
-            <Cart cartItems={cartItems} setCartItems={setCartItems} />
+            <Header totalItems={totalItems} />
+            <Cart cartItems={cartItems} setCartItems={setCartItems} totalItems={totalItems} />
             <Outlet context={{ allChampsArray, addToCart, cartItems, setCartItems }}> 
                 {({ addToCart }) => (
                     <Champion addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />

@@ -1,12 +1,11 @@
 import './styles/cart.css';
 import PropTypes from 'prop-types';
 
-export default function Cart({ cartItems, setCartItems }) {
+export default function Cart({ cartItems, setCartItems, totalItems }) {
     function hideCartWindow() {
         document.getElementsByClassName('cart-window')[0].classList.add('hidden');
     }
 
-    const totalItems = cartItems.reduce((total, item) => total + parseInt(item.champAmount), 0);
     const totalPrice = cartItems.reduce((total, item) => total + item.champPrice * item.champAmount, 0);
 
     function handleDecrease(itemIndex) {
@@ -94,5 +93,6 @@ export default function Cart({ cartItems, setCartItems }) {
 
 Cart.propTypes = {
     cartItems: PropTypes.array,
-    setCartItems: PropTypes.func, // Add this prop for updating cartItems
+    setCartItems: PropTypes.func,
+    totalItems: PropTypes.number
 };
