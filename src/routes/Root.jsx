@@ -5,6 +5,7 @@ import Footer from '../Footer';
 import { useState, useEffect } from 'react';
 import Cart from '../Cart';
 import Champion from './Champion';
+import Search from '../search';
 
 export default function Root() {
     const [allChampsArray, setAllChampsArray] = useState({ data: {} });
@@ -39,6 +40,7 @@ export default function Root() {
                     <Champion addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />
                 )}
             </Outlet>
+            <Search />
             <Footer />
         </>
     );

@@ -8,7 +8,7 @@
 }
 
 .store-btn {
-    background-color: black;
+    background-color: inherit;
     padding: 20px;
     border: 1px white solid;
     font-size: 2rem;
