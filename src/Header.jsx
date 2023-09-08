@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import './styles/header.css'
 import PropTypes from 'prop-types'
 
-export default function Header({ totalItems }) {
+export default function Header({ totalItems, revealSearchWindow }) {
     
     function revealCartWindow() {
         document.getElementsByClassName('cart-window')[0].classList.remove('hidden');
@@ -18,7 +18,7 @@ export default function Header({ totalItems }) {
                     <img className='shop-name-img' src={shopIcon} alt={shopIcon} />
                     <h1 className='shop-name-text'>Champion Shop</h1>
                 </Link>
-                <button className='search-btn'>
+                <button onClick={revealSearchWindow} className='search-btn'>
                     <img className='search-icon' src={searchLogo} alt={searchLogo} />
                     <span>Search Champion</span>
                 </button>
@@ -42,5 +42,6 @@ export default function Header({ totalItems }) {
 }
 
 Header.propTypes = {
-    totalItems: PropTypes.number
+    totalItems: PropTypes.number,
+    revealSearchWindow: PropTypes.func
 }

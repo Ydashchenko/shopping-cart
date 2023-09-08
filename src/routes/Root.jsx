@@ -10,6 +10,15 @@ import Search from '../search';
 export default function Root() {
     const [allChampsArray, setAllChampsArray] = useState({ data: {} });
     const [cartItems, setCartItems] = useState([]);
+    const [isSearchVisible, setIsSearchVisible] = useState(false)
+
+    function hideSearchWindow() {
+        setIsSearchVisible(false);
+    }
+    
+    function revealSearchWindow() {
+        setIsSearchVisible(true);
+    }
 
     function addToCart(item) {
         setCartItems((prevCartItems) => [...prevCartItems, item]);
@@ -33,14 +42,14 @@ export default function Root() {
 
     return (
         <>
-            <Header totalItems={totalItems} />
+            <Header totalItems={totalItems} revealSearchWindow={revealSearchWindow} />
             <Cart cartItems={cartItems} setCartItems={setCartItems} totalItems={totalItems} />
             <Outlet context={{ allChampsArray, addToCart, cartItems, setCartItems }}> 
                 {({ addToCart }) => (
                     <Champion addToCart={addToCart} cartItems={cartItems} setCartItems={setCartItems} />
                 )}
             </Outlet>
-            <Search />
+            <Search allChampsArray={allChampsArray} isSearchVisible={isSearchVisible} hideSearchWindow={hideSearchWindow} />
             <Footer />
         </>
     );

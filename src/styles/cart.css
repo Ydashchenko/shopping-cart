@@ -133,3 +133,7 @@
     padding: 5px;
     align-self: center;
 }
+
+.hidden {
+    display: none !important;
+}
