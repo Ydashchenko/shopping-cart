@@ -10,6 +10,9 @@ export default function Cart({ cartItems, setCartItems }) {
     const totalPrice = cartItems.reduce((total, item) => total + item.champPrice * item.champAmount, 0);
 
     function handleDecrease(itemIndex) {
+        if (cartItems[itemIndex].champAmount <= 1) {
+            return
+        }
         const updatedCartItems = [...cartItems];
         updatedCartItems[itemIndex].champAmount -= 1;
         setCartItems(updatedCartItems);
@@ -23,8 +26,12 @@ export default function Cart({ cartItems, setCartItems }) {
 
     function handleOnChange(itemIndex, e) {
         const updatedCartItems = [...cartItems];
-        updatedCartItems[itemIndex].champAmount = e.target.value;
-        setCartItems(updatedCartItems);
+        const newValue = parseInt(e.target.value);
+
+        if (!isNaN(newValue) && newValue >= 1) {
+            updatedCartItems[itemIndex].champAmount = newValue;
+            setCartItems(updatedCartItems);
+        }
     }
 
     function handleRemove(itemIndex) {
@@ -52,11 +59,11 @@ export default function Cart({ cartItems, setCartItems }) {
                                     <img src={`https://ddragon.leagueoflegends.com/cdn/13.17.1/img/champion/${item.champ}.png`} alt={item.champ} />
                                     <div className='item-info'>
                                         <p className='cart-champ-name'>{item.champ}</p>
-                                        <p className='cart-champ-price'>$ {item.champPrice}</p>
+                                        <p className='cart-champ-price'>$ {item.champPrice * item.champAmount}</p>
                                         <div className='amount-item-bar'>
                                             <button className='decrease-item-in-cart-button' onClick={() => handleDecrease(index)}>-</button>
                                             <input
-                                                min={1}
+                                                minLength={1}
                                                 className='cart-champ-amount-input'
                                                 type="number"
                                                 value={item.champAmount}

@@ -13,7 +13,11 @@ export default function Champion() {
     }
 
     function handleSetChampAmount(e) {
-        setChampAmount(e.target.value)
+        const newValue = parseInt(e.target.value);
+
+        if (!isNaN(newValue) && newValue >= 1) {
+            setChampAmount(newValue);
+        }
     }
 
     function decreaseAmount() {
@@ -24,6 +28,9 @@ export default function Champion() {
     }
 
     function handleAddToCart() {
+        if (champAmount < 1) {
+            return
+        }
         // Create an item object with champName, champPrice, and any other necessary data
         const item = {
             champ,
@@ -64,7 +71,7 @@ export default function Champion() {
                         <p className='champ-price'>$ {champPrice}</p>
                         <div className='add-to-cart-form'>
                             <button onClick={decreaseAmount} className='change-quantity decrease-amount'>-</button>
-                            <input onChange={handleSetChampAmount} className='input-quantity' type="number" min={1} value={champAmount} />
+                            <input onChange={handleSetChampAmount} className='input-quantity' type="number" minLength={1} value={champAmount} />
                             <button onClick={increaseAmount} className='change-quantity increase-amount'>+</button>
                         </div>
                         <button onClick={handleAddToCart} className='add-to-cart-button'>Add to cart</button>
