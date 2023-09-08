@@ -22,3 +22,19 @@ main {
 a {
   text-decoration: none;
 }
+
+
+Link:active, a:active, button:active {
+  transform: scale(0.9);
+}
+
+Link:hover, a:hover, button:hover, .navbar li:hover {
+  text-shadow: 2px 2px 8px #FF0000;
+  
+}
+
+Link, a, button, .navbar li {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
